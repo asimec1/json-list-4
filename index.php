@@ -46,8 +46,8 @@ print '
 			print '
 			<h1>Result of your search</h1>';
 			$key = 'be5ea402';
-			$url = 'http://www.omdbapi.com/?apikey='.$key.'&t=' . $_POST['title'];
-			if ($_POST['year'] != '') { $url .= '&y=' . $_POST['year']; }
+			if ($_POST['year'] != '') { $url = 'http://www.omdbapi.com/?apikey='.$key.'&t=' . urlencode($_POST['title']) . '&y=' . urlencode($_POST['year']); } 
+            		else { $url = 'http://www.omdbapi.com/?apikey='.$key.'&t=' . urlencode($_POST['title']); }
 			$json = file_get_contents($url);
 			$_data = json_decode($json,true);
 			
